@@ -1,0 +1,35 @@
+# Reference repos (read-only clones, not part of this project)
+ref/
+# Raw captures and dumps (large, personal traffic)
+captures/
+*.pcap
+*.pcapng
+# Build output
+bin/
+obj/
+*.user
+.vs/
+__pycache__/
+*.pyc
+# Local runtime data
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+
+# Third-party data (unclear license), local use only
+data/external/
+
+# Test packages
+dist/
+
+# Per-user radar settings (overlay position, sound), created on first start
+data/settings.json
+
+# Original project brief, kept locally only
+START_PROMPT.md
+
+# Local release passwords; never part of a source archive or public repository.
+*.dpapi
+PRIVATE-*.txt
+.release-secrets/

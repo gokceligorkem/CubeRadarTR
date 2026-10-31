@@ -1,0 +1,334 @@
+CUBE RADAR TR 0.8.7 — AION2 Global
+30 Ekim 2026
+
+KULLANIM
+0.8.7 PET EŞİTLEME KORUMASI
+- Aynı ağ adaptöründe oyunun bağlantı listesi değiştiğinde pet koleksiyonu
+  baştan silinmez. Ölüm, ışınlanma ve harita geçişi tek başına ruhları sıfırlamaz.
+  Başka bir bağlantıdaki kayıt/veri kaybı da pet koleksiyonunu etkileyemez.
+- Petlerin bağlı olduğu asıl dünya akışında gerçek veri kaybı varsa toplamlar
+  doğrulanmayı bekler. Durum satırı TCP kaybını veya okunamayan oyun kaydını söyler.
+  Yeni karakter, gerçek bağlantı/adaptör kesintisi veya uygulamayı yeniden açma
+  sonrasında tam koleksiyon gerekir; eski sayılar güncelmiş gibi kullanılmaz.
+- Önceki sürümde silinmiş pet bakiyesi geri getirilemez. Güncellemeden sonra
+  radar açıkken bir kez karakter seçimine dönüp aynı karaktere girerek eşitle.
+- Sorun tekrarlanırsa Ayarlar > Gelişmiş > Tanıyı kaydet içinde petSync bölümü
+  son sıfırlama nedenini ve eşitleme durumunu içerir. Dosya kendiliğinden gönderilmez.
+
+0.8.6 EK PENCERELER
+- Boss Etkinlik > İşlemler > Hazır liste, ana radarın önünde açılır. Saat
+  dilimini seçebilir, ekleyebilir veya Vazgeç / Escape ile kapatabilirsin.
+- Seçim/onay/hata ve tanı kaydetme pencereleri açıkken diğer mini pencereler
+  bunları örtemez. Kapatınca önceki Üstte tut ayarları geri gelir; kaydedilmiş
+  tercihler değişmez. Ana radarın Üstte tut seçeneği açık/kapalı kullanılabilir.
+- Boss düzenleme ayrı ve bağımsız pencere olarak kalır; ana radar küçülünce
+  kaybolmaz. Açıkken ana Üstte tut ayarını değiştirirsen düzenleme de uyar.
+- Bu paket 0.8.5 hareket okuyucusu düzeltmesini de içerir; Motion klasörünü
+  ana EXE ile birlikte kopyala. Pet/boss kayıtları ve uyarı seçimleri korunur.
+
+0.8.5 CANLI YÖN BAĞLANTISI
+- Sıra dışında gelen TCP parçaları artık hemen eşlemeyi bozmaz. Kısa süre
+  bekletilip sıralanır; gerçek veri kaybında yeniden saat doğrulaması yapılır.
+  Eski konum/yönün güncellik süresi uzatılmadı.
+- Güncelleme için ZIP'in tamamını yeni bir klasöre çıkar. Yalnız ana EXE'yi
+  kopyalamak yetmez: Motion klasöründeki 0.8.5 okuyucusu da gerekli.
+- Sorun sürerse Canlı yön açıkken 10 saniye normal yürü, bir kez dash/zıpla,
+  sonra tekrar 10 saniye yürü. Sorun kaybolmadan Ayarlar > Gelişmiş > Tanıyı
+  kaydet ile yerel JSON al. Dosya; okuyucu sürümü, veri yaşı ve hareket/TCP
+  sayaçlarını içerir. Ham paket, ağ adresi ve şifre anahtarı içermez.
+- Yeni okuyucu bu bilgisayarda test senaryolarıyla doğrulandı; başka bir
+  bilgisayarda aynı belirtinin nedenini belirlemek için onun tanısı gerekebilir.
+
+0.8.4 OTOMATİK YAKIN PET TAKİBİ
+- Koleksiyon eşitlendikten sonra, yakında görülen ve MAX için ruhu eksik olan
+  petler otomatik takibe ve mini listeye eklenir. Bilinmeyen ruh sıfır varsayılmaz.
+  Yeni hedef mevcut seviyeden sonraki seviyedir; önceki seviye geçişi sürer.
+- Takipten çıkarmak için ana listedeki Takip kutusunu kaldır veya mini pet
+  satırına sağ tık > Takipten çıkar. Bu seçim kaydedilir; güncelleme, bölgeye
+  dönüş veya uygulamayı yeniden açmak peti otomatik geri eklemez.
+- Yeniden takip için ana listede peti tekrar işaretle. Takip kapalıyken hedef
+  seçicisi kapalıdır; ruh toplamın ve kalan miktarın silinmez.
+- Eksik ruhlar (MAX) görünümü yakında olmasa veya takip edilmezse de bilinen
+  eksik petleri gösterir. Takipten çıkarmak, koleksiyondan silmek değildir.
+- Otomatik eklenen hedef, son yaratık öldüğünde veya bölgeden çıkınca silinmez;
+  sonradan gelen ruh ödülü işlenir. İstemediğini çıkarabilirsin. MAX filtresi,
+  çerçevesiz mini ve görünürlük tercihlerin korunur.
+
+0.8.3 PET SEVİYE GEÇİŞLERİ
+- Pet seviye atlayınca takip hedefi sonraki seviyeye ilerler. Seviye 2 ve 0/75
+  ruh durumunda Seviye 3 hedefi için 75 kaldı yazar. Önceden kaydedilmiş Seviye 2
+  hedefleri de oyun kaydı doğrulandığında otomatik düzelir.
+- Tamamlananları gizle artık mini listeye de uygulanır. Seviye 3 / MAX petler
+  kaybolur; seçimleri silinmez. MAX peti görmek için bu seçeneği kapatabilirsin.
+- Ruh eşiğinin dolması tek başına seviye atlamak değildir. Pet henüz Seviye 1
+  ve 25/25 ise Hazır görünür; oyundaki yükseltme doğrulanınca sonraki hedef açılır.
+
+0.8.2 KOMPAKT MİNİ PET LİSTESİ
+- Büyük kartlar yerine çerçevesiz, her pet için iki satırlı liste vardır.
+  Ad ve kalan ruh üstte, mevcut ruh/kesim/kazanım ve yön altta görünür.
+  Bir petin penceresi normal ölçekte yaklaşık 320 x 100 pikseldir.
+- Sağ üstte ··· veya pencereye sağ tık: Yarı saydam, Görünürlük, Üstte tut,
+  Yüksekliği listeye sığdır ve Takibi düzenle seçeneklerini açar.
+- Görünürlük kaydırıcısı %40–%100 arasındadır. %100 tam opak, düşük değerler
+  daha saydamdır; yazılar da pencereyle birlikte saydamlaşır. Ayar hatırlanır.
+- Başlık veya pet satırından sürükle. Kenar/köşelerden boyutlandır. Yükseklik
+  varsayılan olarak pet sayısına sığar; yüksekliği elle değiştirince bu kapanır.
+  Menüden Yüksekliği listeye sığdır'ı tekrar açabilirsin. × mini pencereyi kapatır.
+- Eski geniş pencere ilk açılışta küçültülür; pet seçimleri, konumu ve Üstte tut
+  korunur. Mini kapanırsa Pet Avı > Mini pet ile yeniden aç.
+
+0.8.1 MİNİ PET SAYACI
+- Pet Avı'nda izlemek istediğin petleri işaretle ve hedef seviyeyi seç.
+  Sağ üstte Mini pet'e bas. Küçük pencere oyun üzerinde görünür; ana Cube Radar'ı
+  küçültmek bunu kapatmaz. Başlığından sürükle, kenarlarından boyutlandır.
+- Üstte Bu oturum: N kesim yazısı vardır. Bu, kendi saldırın ardından ölümü
+  gözlenen yaratıklara katılım sayısıdır; sadece son vuruş veya ödül kredisi değildir.
+  Her kartta kalan ruh, petin mevcut ruhu/hedefi ve bu oturumda alınan ruh görünür.
+- Pet kesimi, yaratık-pet eşlemesi bilinen kesimleri gösterir. Başlangıçtaki
+  yaratık kaydı alınmadıysa toplam yine sayılır; pet hanesinde — veya N+ görünür.
+  Bunlar bilinmeyen/eksik eşlemedir. Her kesim otomatik ruh kazandırmış sayılmaz.
+- Üstte tut seçeneği miniye aittir; konum/boyutuyla birlikte hatırlanır.
+  Birden fazla peti kaydırarak gör. Takibi düzenle ana Pet Avı ekranını açar.
+  Miniyi X ile kapatmak takibi durdurmaz; uygulamanın tamamını kapatmak durdurur.
+- Kesim/ruh kazanımı bu dinleme oturumuna aittir. Yeni bağlantı/karakterde sıfırlanır;
+  aynı karakterin koleksiyonunu yeniden eşitlemek oturum sayısını silmez.
+  Veri kesintisinde sayaç eksik olabilir mesajı görünür.
+
+0.8 PET AVI
+- Üstten Pet Avı'nı aç. Takibi başlat, mevcut radarın aynı dinlemesini kullanır.
+  İlk eşitleme için radar açıkken karaktere giriş yap. Pet koleksiyonu geldiğinde
+  durum satırında Eşitlendi yazar. Eşitleme yoksa sayaç sıfır gösterilmez.
+- Yakındakiler görünümü, son 90 saniyede görülen pet kaynağı yaratıkları listeler.
+  Petin altında görülen yaratığın adı vardır. Takip ettiklerim ve Tüm pet kaynakları
+  görünümleri de seçilebilir. Pet veya yaratık adına göre ara.
+- İzlemek istediğin petin Takip kutusunu işaretle. İlk hedef bir sonraki seviyedir;
+  Seçili hedef'ten Seviye 1/2/3 seçebilirsin. Kalan sütunu bu hedefe göredir.
+  Örnek: seviye 1 ve 13/25 için Lv2 hedefinde 12 ruh, MAX hedefinde 87 ruh kalır.
+- Ruh alınca sayaç gerçek miktarda ilerler; yaratık öldü diye otomatik ruh eklenmez.
+  Seviye yükseltmede harcanan ruh da işlenir. Hedef ruhu tamamlanınca bir kez
+  bildirim ve Sesli uyarı açıksa ses gelir. Sessizde bildirim görünür, sonradan çalmaz.
+- Tamamlananları gizle, doğrulanmış MAX petleri ana ve mini listeden gizler.
+  Yeniden görmek için bu seçeneği kapat. Seviye yükselince hedef otomatik ilerler.
+- Mesafe ve yön için Canlı yön ile taze oyuncu konumu, yaratık için de taze konum
+  gerekir. Eski yaratık konumunda Son görüldü yazar. Statik doğma noktası canlı
+  yaratık sayılmaz. Yalnız oyunun bilgisayarına gönderdiği çevre kayıtları bilinir.
+- Takip/hedef ve filtreler %LOCALAPPDATA%\CubeRadarTR\pets.json içine kaydolur.
+  Pet bakiyesi yeni oturumda yeniden eşitlenir. Veri kaybında yeniden girişle
+  eşitle; uygulama önceki karakterin sayısını kesin güncel kabul etmez.
+
+0.7.3 BOSS YENİLEME VE İLK KURULUM
+- EU / BABA profilinde Watcher Kaira'nın eski hazır kaydı açılışta otomatik
+  onarılır. Arkadaşının farklı kayıt kimliği taşıması artık engel değildir.
+  Mevcut ayarları veya companion.json dosyasını silmek gerekmez.
+- Boss & Etkinlik > Yenile, bekleyen oyun kayıtlarını işler ve takvimi yeniden
+  hesaplar. Dinleme durmuşsa başlatır. Çalınmış uyarıları sıfırlamaz.
+- Yeni kesim/doğma bilgisi için oyunda Harita > Exploration > Field Boss
+  listesini aç. Altgard ve Abyss'i ayrı ayrı aç; Yeni kayıt için oyun listesini
+  aç mesajı, uygulamanın yeni saat verisi beklediğini belirtir.
+- Desteklenen oyun listesi gelince eksik bosslar otomatik eklenir. Abyss'te
+  Nahma'nın üç doğma noktası ayrı satırdır. Yeni satırlarda Uyarı kapalıdır;
+  ses istediğin bossları işaretle. Önceki seçimlerin korunur.
+- Arkadaşına ZIP'in tamamını gönder. Eski uygulamayı kapatıp paketi ayrı
+  klasöre çıkartsın ve yeni CubeRadarTR.exe'yi açsın. Kişisel saat dosyanı
+  paylaşması gerekmez; kendi oyun listesinden kendi saatlerini alır.
+
+0.7.2 BOSS TAKVİMİ VE DÜZENLEME
+- Watcher Kaira'nın doğrulanmış sabit takvimi, doğma saatinden 1 dakika sonra
+  sonraki döngüye geçer. Yeni sunucu saati gelirse bu saat önceliklidir.
+- Doğmuş: oyunun son listesinde boss canlıdır. Kesilmeden yeni kesim sayacı
+  başlamaz. Son kayıt: doğmuş, bu bilginin yeni oyun kaydıyla doğrulanması
+  gerektiğini belirtir. Süresi geçen satırdaki + işareti geçen zamanı gösterir.
+- Oyun haritasında Altgard ve Abyss listeleri ayrı ayrı veri gönderir. Radarın
+  boss ekranını açık tutmak oyunun listesini açmaz. Yeni oyun kaydı alınca
+  sayaç ve canlılık otomatik güncellenir; bilinmeyen süre uydurulmaz.
+- Boss'a çift tıklayınca veya Düzenle ile bağımsız pencere açılır. Ana pencere
+  kullanılabilir, küçülse de editör açık kalır. Aynı anda bir editör açılır;
+  tekrar Düzenle mevcut pencereyi öne getirir. Kaydet sırasında yeni canlı
+  veri korunur. Uygulama tamamen kapanırsa editör de kapanır.
+
+0.7.1 MİNİ RADAR DÜZELTMESİ
+- Ana Cube Radar penceresini görev çubuğuna küçülttüğünde mini radar açık kalır.
+  Oyun üzerinde görünmesi için Ayarlar > Mini Radar > Üstte tut açık olmalı.
+  Genel Üstte tut ve mini radarın Üstte tut seçenekleri ayrıdır.
+- Uygulamayı X ile tamamen kapatmak mini radarı da kapatır. Miniyi kapatmak
+  ana radarı durdurmaz. Küçültme sırasında boss uyarıları ve veri takibi devam eder.
+
+0.7 YENİ ARAYÜZ
+- Radar / Boss & Etkinlik / Ayarlar üst gezinme çubuğundadır. Ayarlar aynı
+  çalışan seçenekleri bölümlere ayırır; ağ, paket ve tanı normal radarda görünmez.
+- Tek RADARI BAŞLAT / RADARI DURDUR düğmesi vardır. En yakın küpün mesafesi,
+  yönü ve imzalı yüksekliği ayrı kartta gösterilir. Oyuncu radarın merkezindedir.
+  Bekleme bilgileri radarın ortasını kapatmaz, üstte küçük durum satırındadır.
+- Geniş pencerede küp listesi radarın sağındadır. Dar pencerede YAKINDAKİ
+  KÜPLER başlığına tıklayarak veya odaklayıp Enter ile aç/kapat. Hedefe kilitlen
+  açıkken mesafe sırası değişse de aynı küp izlenir. Yükseklik filtresi korunur.
+- Boss ekranında ilk üç yaklaşan etkinlik büyük sayaçlarla gösterilir. Kartı
+  seçmek listedeki kayda gider. Uyarı kutuları, sıralama ve sütun sürükleme
+  korunur. Yaklaşan satırda küçük vurgu ve sarı sayaç vardır.
+- + Boss ekle, Düzenle ve Haritada aç doğrudan erişilir. Hazır liste, ses testi,
+  tüm uyarıları aç/kapat ve silme, İşlemler menüsündedir. Ses anahtarları ve
+  sunucu/gösterim saati Ayarlar içindedir.
+- Mini radar: büyük mesafe, kısa durum, merkezde SEN, tek satır boss sayacı.
+  Kenarlarından boyutlandır; içinden sürükle. Sağ üst küçük düğme kompakt
+  görünümü değiştirir. Ayarlar > Mini Radar içinden Üstte tut ve Tıklamaları
+  oyuna geçir seçenekleri vardır. Tıklama geçişini aynı ayardan kapat veya ana
+  pencerede Mini radar düğmesine bas: mini yeniden tıklanabilir olur.
+- Ayarlar: görsel menzil 75/150/300 m, arayüz yenileme 100/200/500 ms ve
+  genel ses seviyesi eklenmiştir. Bunlar paket okuma/tazelik kurallarını değiştirmez.
+  Açılışta radarı başlat, yalnız uygulama açıldığında dinlemeyi başlatır;
+  Windows açılışına kayıt eklemez. Uygulamanın dili Türkçedir.
+- Arayüz tercihleri %LOCALAPPDATA%\CubeRadarTR\ui.json içine kaydedilir;
+  mevcut companion.json boss dosyası ve uyarı seçimleri korunur.
+
+0.6 CANLI BOSS TAKİBİ
+- Başlat açıkken oyunda Harita > Exploration > Field Boss listesini aç.
+  Altgard ve Abyss kendi haritaları görüntülenince otomatik alınır. Süreleri
+  elle yazmak gerekmez. Mevcut 19 kaydın ve Uyarı seçimlerin korunur.
+- Oyun kaydı yeni doğma saatini gönderince sayaç yeniden başlar; aynı bossun
+  yeni doğumu için uyarılar tekrar kurulur. CANLI yalnız taze oyun onayında
+  yazılır. Saati geldi/yenile ifadesi gerçek canlılık onayı değildir.
+- Yakındaki tanınan bossun gerçek ölüm kaydı eski sayacı temizler. Önceden
+  ölçülmüş kesim-doğum aralığı varsa yeni sayaç tahmin etiketiyle başlar.
+  Süre öğrenilmemişse Yeni süre bekleniyor yazar; oyun listesini açınca düzelir.
+- Oyun genellikle liste açıkken kayıt gönderir. Liste kapalıyken uzaktaki
+  tüm kesimler alınamaz. Son oyun kaydı saatini kontrol et; gerekli olduğunda
+  listeyi tekrar aç. Uygulama oyun tuşlarına kendisi basmaz.
+- Watcher Kaira: BABA ekranında 15:00 TR fazı doğrulandı; Global verisindeki
+  3 saat aralıkla ilerler. Bu satır takvim etiketlidir. Oyun paketi bu bossun
+  zamanını 0 gönderdiği için gerçek zaman alanı gibi sunulmaz.
+- Boss sesi ayrı bir savaş borusu/davul motifidir. Boss & Etkinlik içindeki
+  Boss sesi testi düğmesiyle dinle. Sesli uyarı ve Boss sesi açık olmalı.
+
+0.5 YENİLİKLERİ
+- 0.5.1: boss listesinin solundaki Uyarı kutusu her boss için ayrı seçilir ve
+  hemen kaydedilir. İşaretsiz bossun sayacı görünür; ses vermez ve parlamaz.
+  Tüm uyarıları aç/kapat düğmeleri toplu seçim içindir. Varsayılan ses zamanları
+  10 dk, 5 dk ve başlangıçtır; Sesli uyarı ve Boss sesi açık kalmalı.
+- Liste yenilenirken kaydırma, seçili hücre ve sütun ayarları korunur. Başlıklara
+  tıklayarak sırala; sütun kenarını sürükleyerek genişlet. Uyarı sütunu solda sabit,
+  diğer sütunlar taşınabilir. Yatay ve dikey kaydırma çubukları kullanılabilir.
+- Listeden küp seç > Hedefe kilitlen: mesafe sırası değişse de aynı küp izlenir.
+  Hedef kaybolursa veya filtre dışındaysa bu açıkça yazılır. Yeni oturum/harita
+  kilidi kaldırır. Mini radar, aynı hedefi küçük ve üstte duran pencerede gösterir.
+- Ayarlar sekmesinde yükseklik filtresi ve Yeniden bağlan vardır. Yön okuyucusu
+  bağlantı değişiminde durursa bu düğme yeniden açar; Windows onayı gerekebilir.
+- Son konum/yön verisinin yaşı ana ekranda görünür.
+- Boss & Etkinlik: boss, harita, konum, sunucu saati ve senin saatin ayrı tutulur.
+  Türkiye gösterimi UTC+3'tür. Takvimin kendi saat dilimi her kayıtta seçilir.
+- Ekle/Düzenle ile tek seferlik tarih-saat veya günlük/haftalık saatler girilir.
+  Özel etkinlikler için elle saat eklenebilir; tanınan bossları canlı takip alır.
+  Haritada aç, seçili bossun kaynak harita işaretini tarayıcıda açar.
+- Yaklaşan (10 dk ve altı) etkinlik satırı yavaşça parlar. Sesli uyarı ve Boss
+  sesi açıksa varsayılan 10 dk, 5 dk ve başlangıçta birer ses çalar. Süreler
+  düzenlenebilir. Birden fazla boss aynı anda uyarırsa tek ses çalar.
+- Uygulama açık kalmalı. Kapatıldığında veya bilgisayar uyurken alarm çalışmaz.
+  Sessizde geçen eşikler sonradan topluca çalınmaz. Başlangıcı 1 dk'dan fazla
+  geçmiş etkinlik için geç ses verilmez. "Saati geldi" canlı doğma onayı değildir.
+- Profil EU / BABA / Asmodian; varsayılan gösterim Türkiye. Kaynaklardan gelen
+  Global şablonlar pasiftir: saat dilimi ve oyun saati doğrulanınca Düzenle'deki
+  doğrulama seçeneğiyle açılır. Altgard saatleri artık oyun listesinden alınır.
+- Veriler %LOCALAPPDATA%\CubeRadarTR\companion.json içinde yereldir. Takvim ve
+  çalınmış alarm anahtarları kaydedilir; diğer kullanıcılara gönderilmez. Dosya
+  bozuksa üzerine yazılmaz, arayüz hata gösterir.
+
+TEMEL KULLANIM
+1. ZIP'i klasöre çıkart. CubeRadarTR.exe, config ve Motion klasörleri birlikte kalmalı.
+2. AION2'de karakterin dünyaya girdikten sonra Başlat'a bas.
+3. Gerçek konum ve bakış yönü için Canlı yön düğmesine bas. Windows yönetici
+   onayını CubeRadarMotion.exe yardımcısı için ver. İlk hazırlık birkaç saniye sürer.
+4. Birkaç adım yürü. Üstte CANLI · YÖN HAZIR görünür. Ayrıntılı Packet ve konum
+   bilgileri Ayarlar > Tanı içindedir.
+5. Küp kaydı gelince liste ve radar güncellenir; Sesli uyarı açıksa ses çalar.
+6. Durdur veya pencereyi kapatmak iki okuyucuyu da durdurur. Yönü kapat yalnız
+   hareket okuyucusunu durdurur; sunucudan küp dinlemesi devam eder.
+
+NE OKUNUYOR?
+- Küpler sunucunun bilgisayarına gönderdiği nesne kayıtlarından bulunur.
+- Paket yönü açıkken, yalnız AION2'nin etkin dünya TCP bağlantısının giden
+  hareket kayıtları çözülür. XYZ, hareket açısı ve ayrı bakış açısı alınır.
+- Şifre çözmek için yardımcı, AION2 sürecinin ağ şifreleme durumunu salt okunur
+  inceler. İlk yer bulma taraması daha geniş RAM bloklarını okuyabilir; sonrasında
+  küçük durum blokları kullanılır. Oyun belleğine yazılmaz, enjeksiyon yapılmaz.
+- Anahtar ve şifreleme durumu yalnız yardımcının RAM'inde kalır. Radara yerel,
+  aynı Windows hesabına kısıtlı kanaldan yalnız çözülmüş konum/açı ve sağlık
+  bilgileri gider. Anahtar, ham paket veya hesap içeriği otomatik kaydedilmez.
+- Görüntü tanıma yoktur; oyuna paket, tuş veya tıklama gönderilmez.
+
+RADARI OKUMA
+- 0.4.1: serbest uçuşun 0A37/0B37 konum ve yön kayıtları desteklenir.
+  Havada sabit dururken yeni kayıt gelmeyebilir; 2,5 saniye sonra yön beklenir.
+- Üstteki kart en yakın küpün mesafesini, sana göre yönünü ve yüksekliğini söyler.
+  Örneğin “49 m · Sağ önünde”, sağ öne ilerlemen gerektiğini gösterir.
+- Küpler mesafeye göre 1, 2, 3 diye numaralanır; radar etiketi ve liste numarası
+  aynı küpü gösterir. Sarı etiket en yakın küptür. Numara, sıralama değişince değişir.
+- Beyaz üçgen hep merkezde yukarı bakar. Packet güncelse üst = karakterin baktığı
+  yön. ÖN, ARKA, SOL, SAĞ etiketleri bunu belirtir. Küpler oyuncuya göre döndürülür.
+  Bu, serbest kameranın yönü değildir. Soluk ön dilim bakış yönünü vurgular.
+- Hareket paketleri yaklaşık 10 Hz güncellenir. Yeni açı/konum 2,5 saniyeden
+  eskiyse kesin Packet yönü gösterilmez; Unknown görülebilir. Sadece kamerayı
+  döndürmek yeni karakter yönü kaydı üretmeyebilir. Bir adım veya eylem yeni
+  kayıt getirir; gönderilmemiş açı tahmin edilmez.
+- Geçici hareket yönü ayrı bir seçenektir. Packet verisi önceliklidir. Packet
+  yokken bu seçenek, son konumlardan yaklaşık yürüyüş yönü çıkarır; bakış yönü
+  değildir ve 3 saniyede eskir. Yaklaşık mod açıkça işaretlenir.
+- 50/100/150m halkaları doğrusal ölçeklidir. 150m dışı hedefler varsayılan çizilmez.
+  Ayarlar içindeki seçenekle kenara sabitlenir; mesafe gerçek kalır.
+- Sarı elmas küptür. ▲ yukarıda, ▼ aşağıda; 3m'den küçük fark aynı kat sayılır.
+- Yön bilinmiyorsa noktalar çizilmez ve kartta “Yön bekleniyor” yazar.
+  Yeni bir hareket kaydı için birkaç adım yürü; eski yön güncelmiş gibi gösterilmez.
+- Sonar 2,5 saniyelik görsel animasyondur; oyuna tarama paketi göndermez.
+- Küp noktasına gelmek veya satır seçmek mesafe/yön/yükseklik ayrıntısını verir.
+
+SES VE TANI
+- Ses testi uygulamanın kendi iki tonlu sesini çalar. Windows sistem uyarı
+  sesine bağlı değildir. Bu ses kullanıcı tarafından duyularak doğrulandı.
+- Yakınlık bipi isteğe bağlıdır: <=25m ~0,7s, <=50m ~1,2s, <=100m ~2,2s,
+  <=150m ~3,5s. Güncel ve güvenilir konum gerekir.
+- Sesli uyarı kapalıyken otomatik sesler durur. Ses testi açık bir deneme
+  eylemi olarak çalışmaya devam eder.
+- Ayarlar > Tanı panelinde kaynak Packet, dünya bakış/hareket açıları, XYZ ve seçili
+  küpün dönüş hesabı görünür. Hareket ve bakış açısı ayrı alanlardır.
+- Tanıyı kaydet yalnız tıklanınca yerel JSON yazar; kendi konumunu, seçili
+  küpü ve sınırlı açı adaylarını içerebilir. Anahtar veya ham paket içermez.
+- Source BuffConsensus yalnız kimlik tahminidir. Başka oyuncunun buff'ları
+  SelfInfo/OwnRecords ile bulunan kendi kimliğini değiştiremez. C2S konumu
+  ise oyuna ait bağlantıdan alındığından bu buff tahminine bağlı değildir.
+
+SINIRLAR
+- Yalnız sunucunun bildirdiği küpler bilinebilir; tüm haritanın canlı listesi yoktur.
+- Küp kaydı gelmemesi çevrede kesin küp bulunmadığı anlamına gelmez.
+- Verteron 1200039/1200041 kaynakta doğrulanmıştır. Altgard 1301199 deneysel
+  tanımdır; * ile işaretlenir. Diğer bölgeler/sürümler ayrıca doğrulanmalıdır.
+- IPv4 dünya bağlantısı (13328) ve bu bilgisayarda test edilen istemci desteklenir.
+  Oyun güncellemesi, VPN/yönlendirici veya bağlantı değişimi yeniden doğrulama
+  gerektirebilir. Bağlantı değişince Canlı yön okuyucusunu yeniden aç.
+- Yeni hareket türü/uzun süre veri yokluğu Unknown doğurabilir. Her uçuş/dash
+  varyantının yön alanı çözülmüş değildir. Eski veri güncelmiş gibi sunulmaz.
+- Npcap gerekir: https://npcap.com/#download . Bu bilgisayarda kurulu bulundu.
+  Npcap bu pakete dahil değildir. Ana arayüz normal yetkiyle çalışır; yalnız
+  isteğe bağlı hareket yardımcısı Windows yönetici onayı ister.
+- Üstte tut, özel tam ekran oyun üzerinde görünmeyi garanti etmez.
+- Canlı hareket ve Packet göstergesi doğrulandı. Gerçek bir küpün yanında
+  canlı sesli uyarı henüz doğrulanmadı; küp parser'ı kayıtlı gerçek örneklerle testli.
+
+DOĞRULAMA
+256 .NET testi + 9 Python okuyucu testi geçti. Canlı ölçümde 421 hareket/açı
+kaydı, 1.736 zaman kaydı çözüldü. Koordinat değişimiyle hareket açısının medyan
+farkı ~0,004°; bakış ile hareket açısı bazı örneklerde 45° ayrıştı.
+Kullanıcı yürürken 0.3.0 arayüzünde Packet gördüğünü doğruladı.
+0.4.0 arayüz değişikliğidir; konum/yön/küp hesapları, hareket yardımcısı ve ses
+korundu. Normal ve küçük pencerede, yön açık ve yön yokken örnek çizimler
+incelendi. Örnek göster ve tasarım önizlemeleri canlı küp verisi değildir.
+
+OYUN KURALLARI
+NCSOFT onaylı değildir. Yetkisiz programlar için hesap yaptırımları öngören
+politika geçerlidir: https://www.plaync.com/policy/operation/aion2global/en
+
+KAYNAK VE LİSANS
+Arayüz/çekirdek GPL-3.0: https://github.com/dr89mh/aion2-cube-radar
+Yakalama/protokol atıfları: https://github.com/cyberbadger6969/aion2-dps-meter
+Salt okunur konumlandırıcı alt kümesi MIT:
+https://github.com/lunixxx37/aion2-protocol-research
+Lisanslar ThirdPartyNotices ve Motion/LICENSE-MIT.txt içindedir.
+Tam kaynak: CubeRadarTR-0.7.2-kaynak.zip. Alanlar ve formül: TEKNIK-RAPOR-TR.md.
+Derleme komutları kaynak içindeki src/CubeRadar.Motion/README.md'dedir.
