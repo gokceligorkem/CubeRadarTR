@@ -1,0 +1,2 @@
+Combat layouts 4/6 and hit notices adapted from https://github.com/cyberbadger6969/aion2-dps-meter/blob/master/src/AionMeter.Core/Protocol/PacketParser.cs (GPL-3.0).
+Retrieved 2026-10-30. SHA256 a6a8e29c9b695691fc514ec0d46d9bf802a145cf095063981fc553fffdc4888f

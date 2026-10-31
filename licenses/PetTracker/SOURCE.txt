@@ -1,0 +1,1 @@
+Pet catalog, NPC source mappings and protocol body layouts adapted from https://github.com/0Fox2Give/PetTracker at revision a04093f07e68c907b9e022de8506eec259c7f9bd. GPL-3.0; see repository LICENSE. Data reduced to ID/name/family and unambiguous NPC mappings; no artwork copied.
