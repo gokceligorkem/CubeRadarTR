@@ -1,0 +1,16 @@
+{
+  "source": "local EU/BABA passive diagnostic; user reported one kill during the measurement",
+  "atMs": 1793382552256,
+  "combat": {
+    "HitFrames": 615,
+    "DecodedHits": 168,
+    "OwnHitFrames": 1,
+    "DeathFrames": 14,
+    "EligibleDeaths": 0,
+    "LastDeathTail": 0,
+    "LastHitTargetKnown": false,
+    "OwnHitNotices": 0
+  },
+  "rewards": [],
+  "limits": "The target NPC appearance preceded this diagnostic. This exposed the need for a source-independent session total. The final total was regression-tested; this earlier run did not validate its numerical output. No raw packets or actor/character IDs retained."
+}

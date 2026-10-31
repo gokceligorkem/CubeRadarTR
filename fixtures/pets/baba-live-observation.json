@@ -1,0 +1,17 @@
+{
+  "source": "local passive capture; user confirmed relog and pet farming on EU / BABA",
+  "atUtc": "2026-10-30T17:11:08.641000+00:00",
+  "collectionDecoded": true,
+  "nearbyAtObservation": 12,
+  "observedRewards": [
+    {
+      "PetId": 1155,
+      "Name": "Superior Water Spirit",
+      "Rank": 2,
+      "Souls": 11,
+      "Verified": true,
+      "ObservedSessionSouls": 5
+    }
+  ],
+  "limits": "No raw packets, account/character identifiers or keys retained. NPC distances were not visually verified. Live rank-up was not exercised."
+}
