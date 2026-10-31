@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AssemblyName>CubeRadarTR</AssemblyName>
+    <Version>0.8.11</Version>
+    <ApplicationHighDpiMode>PerMonitorV2</ApplicationHighDpiMode>
+    <Product>Cube Radar TR</Product>
+    <ApplicationIcon>..\..\assets\cuberadar.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CubeRadar.Core\CubeRadar.Core.csproj" />
+    <Compile Include="..\CubeRadar.Cli\CubeSound.cs" Link="Audio\CubeSound.cs" />
+    <Content Include="..\..\config\radar.json" Link="config\radar.json" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+    <Content Include="..\..\config\cubes.json" Link="config\cubes.json" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+    <EmbeddedResource Include="..\..\fixtures\cubes\2026-10-13_verteron_two_cubes.json" LogicalName="cube-demo.json" />
+  </ItemGroup>
+</Project>
